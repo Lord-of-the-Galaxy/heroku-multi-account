@@ -18,4 +18,10 @@ There are three config variables (alias for environment variables on heroku) for
 #### The HMA Shared Key
 This is any alphanumeric-only key that you, the user, needs to generate and set on both the master and slave (using `heroku config:set HMA_SHARED_KEY=<key here>`).
 
+### On the Slave
+There's not much setup to do in the slave. You need to add the `hma_conf.py`, `hma_slave.py` and `wsgi.py` files (to the root of your heroku folder). Next, add `web: gunicorn wsgi:app` to your `Procfile`, and ensure that `flask`, `gunicorn` and `psycopg2` are added to the `requirements.txt`. Add the `HMA_SHARED_KEY` config var to the app. Now just commit and push your changes (to heroku) and you're almost done. Make sure to scale the dynos to 0 (`heroku ps:scale web=0 worker=0`)
+The next step is to provision the postgres addon. **Important:** you need to ensure that all the tables that are to be synced are _already_ created on both the slave and master apps before HMA kicks in. You may have to run the worker once in order to achieve this.
+The last step is to create an authorization.
+
 ### On the Master
+On the master, you need to add the `hma_conf.py` and `hma_master.py` files. Then, 
