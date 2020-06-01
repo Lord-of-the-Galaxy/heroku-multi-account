@@ -31,3 +31,6 @@ You now only need to set up the [Heroku scheduler](https://devcenter.heroku.com/
 
 #### Finishing up
 You're all done now, you just need to start the worker dyno on the correct account/app. If the date is between **1st** and **21st** (both inclusive), start the dyno on the _master_ (using `heroku ps:scale worker=1`). Otherwise, start it on the _slave_. This should ensure best results.
+
+## Bugs and features
+Please [open an issue](https://github.com/Lord-of-the-Galaxy/heroku-multi-account/issues/new) or pull request (if you fixed it yourself) in case of any bugs or feature requests. Thanks :)
