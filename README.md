@@ -1,5 +1,6 @@
 # Heroku Multi-Account hosting
 Host an app that requires an always-on worker dyno accross two accounts on heroku.
+**DO NOT USE**
 
 ## Introduction
 The two accounts/apps are called `master` and `slave`. The app will end up using almost all the free dyno hours (550) on the master, and just under half the free hours on the slave each month. This means you can use the same account for two slaves. What these scripts do (once configured properly) is to, on the 1st (or rarely 2nd) of each month, copy all the postgresql tables (only the data in the tables, not the tables themselves) from the slave to the master, and turn off the worker dyno on the slave while starting the worker dyno on the master. Then, on the 21st (or 22nd) of every month, do the reverse - copy data from the master to slave, and switch off the worker dyno on the master while turning on the slave.
