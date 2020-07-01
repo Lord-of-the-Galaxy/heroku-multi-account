@@ -53,7 +53,7 @@ def main():
             print("Shift has probably already happened")
         else:
             print("In a forbidden state:", state)
-    elif date == 21 or date == 22: #in case it missed once
+    elif date == 22 or date == 23: #in case it missed once
         # shift from master to slave, checking to ensure it hasn't already happened
         status = check_status()
         if status == 'master':
