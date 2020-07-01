@@ -67,7 +67,8 @@ def main():
 
 
 def check_status():
-    """Check the status of the application, i.e., whether it is running on the master or slave
+    """Check the status of the application, i.e., whether it is running on the master or slave.
+
         Also check to see if there are any issues, like the web dyno on the slave running, or both workers running etc."
     """
     # assume no web dynos on master - there should never be a web dyno on master
@@ -103,7 +104,7 @@ def check_status():
 
 
 def master_to_slave():
-    """Shift the process from master to slave, shifting data as needed"""
+    """Shift the process from master to slave, shifting data as needed."""
     print("Shifting from master to slave")
     stop_master_worker()
     setup_slave_web()
@@ -115,7 +116,7 @@ def master_to_slave():
 
 
 def slave_to_master():
-    """Shift the process from slave to master, shifting data as needed"""
+    """Shift the process from slave to master, shifting data as needed."""
     print("Shifting from slave to master")
     stop_slave_worker()
     setup_slave_web()
@@ -127,7 +128,7 @@ def slave_to_master():
 
 
 def setup_slave_web():
-    """Sets up the web server on the slave, then checks it"""
+    """Sets up the web server on the slave, then checks it."""
     print("Starting slave web")
     r = req.patch(f"{SLAVE_API_URL}/formation/web", json=API_PAYLOAD_1, headers=SLAVE_API_HEADERS)
     if r.status_code != req.codes.ok:
@@ -149,7 +150,7 @@ def setup_slave_web():
 
 # LOTS of code duplication here, should fix sometime
 def stop_slave_web():
-    """Stops the web process on the slave"""
+    """Stops the web process on the slave."""
     print("Stopping slave web")
     r = req.patch(f"{SLAVE_API_URL}/formation/web", json=API_PAYLOAD_0, headers=SLAVE_API_HEADERS)
     if r.status_code != req.codes.ok:
@@ -164,7 +165,7 @@ def stop_slave_web():
 
 
 def start_master_worker():
-    """Starts the worker process on the master"""
+    """Starts the worker process on the master."""
     print("Starting master worker")
     r = req.patch(f"{MASTER_API_URL}/formation/worker", json=API_PAYLOAD_1, headers=MASTER_API_HEADERS)
     if r.status_code != req.codes.ok:
@@ -175,10 +176,10 @@ def start_master_worker():
     print("Waiting a bit")
     time.sleep(10)
     return True
- 
+
 
 def stop_master_worker():
-    """Stops the worker process on the master"""
+    """Stops the worker process on the master."""
     print("Stopping master worker")
     r = req.patch(f"{MASTER_API_URL}/formation/worker", json=API_PAYLOAD_0, headers=MASTER_API_HEADERS)
     if r.status_code != req.codes.ok:
@@ -192,7 +193,7 @@ def stop_master_worker():
  
 
 def start_slave_worker():
-    """Starts the worker process on the slave"""
+    """Starts the worker process on the slave."""
     print("Starting slave worker")
     r = req.patch(f"{SLAVE_API_URL}/formation/worker", json=API_PAYLOAD_1, headers=SLAVE_API_HEADERS)
     if r.status_code != req.codes.ok:
@@ -207,7 +208,7 @@ def start_slave_worker():
 
 
 def stop_slave_worker():
-    """Stops the worker process on the slave"""
+    """Stops the worker process on the slave."""
     print("Stopping slave worker")
     r = req.patch(f"{SLAVE_API_URL}/formation/worker", json=API_PAYLOAD_0, headers=SLAVE_API_HEADERS)
     if r.status_code != req.codes.ok:
@@ -221,7 +222,7 @@ def stop_slave_worker():
 
 
 def prepare_push():
-    """Prepares to send data from master (this) to slave"""
+    """Prepares to send data from master (this) to slave."""
     print("Preparing to push")
     cur = conn.cursor()
     try:
@@ -238,7 +239,7 @@ def prepare_push():
 
 
 def push_to_slave():
-    """Sends data from the master (this) to the slave"""
+    """Sends data from the master (this) to the slave."""
     print("Pushing to slave")
     try:
         for tname in TABLES:
@@ -256,7 +257,7 @@ def push_to_slave():
 
 
 def pull_from_slave():
-    """Pulls data from the slave"""
+    """Pulls data from the slave."""
     print("Pulling from slave")
     r = req.get(f"{SLAVE_URL}/prepare_pull")
     if r.status_code != req.codes.ok:
@@ -281,7 +282,7 @@ def pull_from_slave():
 
 
 def commit_pull_to_db():
-    """Commit data pulled from slave to the master's database"""
+    """Commit data pulled from slave to the master's database."""
     print("Committing pulled data")
     cur = conn.cursor()
     try:
