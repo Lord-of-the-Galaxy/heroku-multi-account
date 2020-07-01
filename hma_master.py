@@ -61,7 +61,7 @@ def main():
         elif status == 'slave':
             print("Shift has probably already happened")
         else:
-            print("In a forbidden state:", state)
+            print("In a forbidden state:", status)
     else:
         pass
 
