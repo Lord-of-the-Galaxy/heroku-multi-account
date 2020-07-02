@@ -52,7 +52,7 @@ def main():
         elif status == 'master':
             print("Shift has probably already happened")
         else:
-            print("In a forbidden state:", state)
+            print("In a forbidden state:", status)
     elif date == 22 or date == 23: #in case it missed once
         # shift from master to slave, checking to ensure it hasn't already happened
         status = check_status()
@@ -67,9 +67,10 @@ def main():
 
 
 def check_status():
-    """Check the status of the application, i.e., whether it is running on the master or slave.
+    """
+    Check the status of the application, i.e., whether it is running on the master or slave.
 
-        Also check to see if there are any issues, like the web dyno on the slave running, or both workers running etc."
+    Also check to see if there are any issues, like the web dyno on the slave running, or both workers running etc."
     """
     # assume no web dynos on master - there should never be a web dyno on master
     r = req.get(f"{MASTER_API_URL}/formation/worker", headers=MASTER_API_HEADERS)
@@ -189,8 +190,8 @@ def stop_master_worker():
     #wait a bit for the worker process to stop
     print("Waiting a bit")
     time.sleep(2)
-    return True
- 
+    return True 
+
 
 def start_slave_worker():
     """Starts the worker process on the slave."""
