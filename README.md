@@ -11,10 +11,10 @@ Overall, this should be able to migrate the app from account to account with min
 Using this is very simple (hopefully). [Download the lastest release](https://github.com/Lord-of-the-Galaxy/heroku-multi-account/releases). You should find four files in there. First, modify the configuration file, `hma_conf.py` as needed. Next, you can move on to using it on heroku.
 
 ### Config vars and Authorization
-There are three config variables (alias for environment variables on heroku) for purpose of authentication. They are:
-*  `HMA_SHARED_KEY` - Needs to be set on both master and slave, used internally by HMA.
-*  `MASTER_HEROKU_TOKEN` - Only needed on master, this is used to make Heroku API requests.
-*  `SLAVE_HEROKU_TOKEN` - Only needed on master, this is used to make Heroku API requests.
+There are three config variables (alias for environment variables on heroku) for purpose of authentication. They are:  
+* `HMA_SHARED_KEY` - Needs to be set on both master and slave, used internally by HMA.  
+* `MASTER_HEROKU_TOKEN` - Only needed on master, this is used to make Heroku API requests.  
+* `SLAVE_HEROKU_TOKEN` - Only needed on master, this is used to make Heroku API requests.  
 
 #### The HMA Shared Key
 This is any alphanumeric-only key that you, the user, needs to generate and set on both the master and slave (using `heroku config:set HMA_SHARED_KEY=<key here>`).
