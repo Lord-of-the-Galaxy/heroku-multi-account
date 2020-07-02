@@ -12,9 +12,10 @@ Using this is very simple (hopefully). [Download the lastest release](https://gi
 
 ### Config vars and Authorization
 There are three config variables (alias for environment variables on heroku) for purpose of authentication. They are:  
-* `HMA_SHARED_KEY` - Needs to be set on both master and slave, used internally by HMA.
-* `MASTER_HEROKU_TOKEN` - Needed on both master and slave, this is used to make Heroku API requests.
-* `SLAVE_HEROKU_TOKEN` - Only needed on master, this is also used to make Heroku API requests.
+
+*   `HMA_SHARED_KEY` - Needs to be set on both master and slave, used internally by HMA.
+*   `MASTER_HEROKU_TOKEN` - Needed on both master and slave, this is used to make Heroku API requests.
+*   `SLAVE_HEROKU_TOKEN` - Only needed on master, this is also used to make Heroku API requests.
 
 #### The HMA Shared Key
 This is any alphanumeric-only key that you, the user, needs to generate and set on both the master and slave (using `heroku config:set HMA_SHARED_KEY=<key here>`).
