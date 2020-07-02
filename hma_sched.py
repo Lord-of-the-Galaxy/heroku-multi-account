@@ -14,7 +14,7 @@ MASTER_API_HEADERS = {
         "Authorization": f"Bearer {MASTER_TOKEN}"
         }
 
-API_PAYLOAD = {'command': "python hma_master.py", 'attach':false 'size': 'free', 'type': 'run', 'time_to_live': 450}
+API_PAYLOAD = {'command': "python hma_master.py", 'attach':False, 'size': 'free', 'type': 'run', 'time_to_live': 450}
 
 def run_hma():
     r = req.post(f"{MASTER_API_URL}/dynos", json=API_PAYLOAD, headers=MASTER_API_HEADERS)
