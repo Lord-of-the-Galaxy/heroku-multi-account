@@ -1,4 +1,11 @@
+# DEFUNCT
+
+>__Warning__
+
+This method cannot be used anymore (at least not in a way that makes sense) as Heroku [decided to completely remove its free tier](https://help.heroku.com/RSBRUH58/removal-of-heroku-free-product-plans-faq). This repository has just been preserved as an archive.
+
 # Heroku Multi-Account hosting
+
 Host an app that requires an always-on worker dyno accross two accounts on heroku.  
 **USE AT OWN RISK** - Not really sure if it works, although it probably does.
 
